@@ -1,0 +1,334 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Organizacion API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/activities": {
+            "get": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "get activities tree",
+                "operationId": "53e7a0b67f6097ed90245000764b2e5e",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/activities/{id}/organizations": {
+            "get": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Get organization by activity ID",
+                "operationId": "69ea0026c71589c46d557b875ef32f99",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the activity",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/buildings": {
+            "get": {
+                "tags": [
+                    "Buildings"
+                ],
+                "summary": "get buildings",
+                "operationId": "704d1f7897ed7a3b8d29dacea66823ad",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/buildings/{id}/organizations": {
+            "get": {
+                "tags": [
+                    "Buildings"
+                ],
+                "summary": "Get organization by building ID",
+                "operationId": "89c386490252a372efc1801eeec15a51",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the building",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/organizations": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "get organizations",
+                "operationId": "42efb13746ba71d73c330585f09ecef8",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/organizations/{id}": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Get organization by ID",
+                "operationId": "68e75650b204083886e125e02aaa2f4b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the organization",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/organizations/name/{name}": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Find organization by name",
+                "operationId": "592bfeec99693d8016ffd61df53762c3",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "name of the organization",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/organizations/find-in-radius": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Find organizations within a radius",
+                "operationId": "7dba2f9c5064124605e00c3c2b1e1069",
+                "parameters": [
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Latitude of the central point",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 40.73061
+                        }
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Longitude of the central point",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "example": -73.935242
+                        }
+                    },
+                    {
+                        "name": "radius",
+                        "in": "query",
+                        "description": "Search radius in kilometers (default: 10)",
+                        "required": false,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 10
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/organizations/find-in-rectangle": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Find organizations within a rectangular area",
+                "operationId": "82064b43a988e8076acdcb1e75a57745",
+                "parameters": [
+                    {
+                        "name": "north_west_latitude",
+                        "in": "query",
+                        "description": "Latitude of the north-west corner of the rectangle",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 40.73061
+                        }
+                    },
+                    {
+                        "name": "north_west_longitude",
+                        "in": "query",
+                        "description": "Longitude of the north-west corner of the rectangle",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "example": -73.935242
+                        }
+                    },
+                    {
+                        "name": "south_east_latitude",
+                        "in": "query",
+                        "description": "Latitude of the south-east corner of the rectangle",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 40.712776
+                        }
+                    },
+                    {
+                        "name": "south_east_longitude",
+                        "in": "query",
+                        "description": "Longitude of the south-east corner of the rectangle",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "example": -74.005974
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Activities",
+            "description": "Operations related to activities"
+        },
+        {
+            "name": "Buildings",
+            "description": "Operations related to Buildings"
+        },
+        {
+            "name": "Organizations",
+            "description": "Operations related to Organizations"
+        }
+    ]
+}
